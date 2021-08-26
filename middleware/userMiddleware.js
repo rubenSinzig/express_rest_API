@@ -16,6 +16,8 @@ const getAllUser = async (req, res) => {
   }
 };
 
+// export _________________________________________________________
+
 module.exports = {
   getAllUser,
 };

@@ -3,6 +3,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const user = require("./router/user");
 
 // use express && morgan  ____________________________
 
@@ -21,6 +22,10 @@ mongoose
   .catch((err) =>
     console.log(`DB is NOT connected see error message : ${err.message}`)
   );
+
+// root route for users "/users" ____________________
+
+app.use("/users", user);
 
 // welcome message for root route "/" _______________
 
