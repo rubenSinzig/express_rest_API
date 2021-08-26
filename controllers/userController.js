@@ -15,7 +15,7 @@ const getAllUser = async (req, res) => {
   }
 };
 
-// add new user ___________________________________________________
+// add new user (POST) ____________________________________________
 
 const addNewUser = async (req, res) => {
   const user = new userData({
@@ -28,7 +28,7 @@ const addNewUser = async (req, res) => {
   });
   try {
     // save new user
-    const newUser = await employee.save();
+    const newUser = await user.save();
 
     // status 201 -> Created
     res
