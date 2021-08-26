@@ -21,3 +21,13 @@ mongoose
   .catch((err) =>
     console.log(`DB is NOT connected see error message : ${err.message}`)
   );
+
+// welcome message for root route "/" _______________
+
+app.get("/", (req, res) => {
+  res.status(200).send("Welcome to the express rest API project");
+});
+
+// export app _______________________________________
+
+module.exports = app;
