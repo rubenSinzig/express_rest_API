@@ -15,8 +15,34 @@ const getAllUser = async (req, res) => {
   }
 };
 
+// add new user ___________________________________________________
+
+const addNewUser = async (req, res) => {
+  const user = new userData({
+    userName: req.body.userName,
+    userPass: req.body.userPass,
+    age: req.body.age,
+    fbw: req.body.fbw,
+    toolStack: req.body.toolStack,
+    email: req.body.email,
+  });
+  try {
+    // save new user
+    const newUser = await employee.save();
+
+    // status 201 -> Created
+    res
+      .status(201)
+      .json({ message: `${newUser.userName} is successfully created` });
+  } catch (err) {
+    // status 400 -> Bad Request (client error)
+    res.status(400).json({ message: err.message });
+  }
+};
+
 // export _________________________________________________________
 
 module.exports = {
   getAllUser,
+  addNewUser,
 };
