@@ -3,7 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const UserData = require("../model/userModel");
-const { getAllUser } = require("../middleware/userMiddleware");
+const { getAllUser } = require("../controllers/userController");
 
 // GET all users on root route users http://localhost:5000/users ______
 
