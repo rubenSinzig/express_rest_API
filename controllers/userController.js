@@ -31,9 +31,42 @@ const addNewUser = async (req, res) => {
     const newUser = await user.save();
 
     // status 201 -> Created
-    res
-      .status(201)
-      .json({ message: `${newUser.userName} is successfully created` });
+    res.status(201).json({
+      message: `${newUser.userName} is successfully created`,
+      data: newUser,
+    });
+  } catch (err) {
+    // status 400 -> Bad Request (client error)
+    res.status(400).json({ message: err.message });
+  }
+};
+
+// update user (PUT) ______________________________________________
+
+const updateUser = async (req, res) => {
+  try {
+    await userData.updateOne(
+      // returns with the first username found in the DB
+      { userName: req.params.userName },
+
+      // defines which parameters the user is allowed to update
+      {
+        $set: {
+          userName: req.body.userName,
+          userPass: req.body.userPass,
+          age: req.body.age,
+          toolStack: req.body.toolStack,
+          email: req.body.email,
+        },
+        // changes the date when the user registered to the date when the data was changed
+        $currentDate: {
+          userUpdated: Date.now,
+        },
+      }
+    );
+
+    // status 200 -> OK
+    res.status(200).json({ message: "Data was successfully updated" });
   } catch (err) {
     // status 400 -> Bad Request (client error)
     res.status(400).json({ message: err.message });
@@ -45,4 +78,5 @@ const addNewUser = async (req, res) => {
 module.exports = {
   getAllUser,
   addNewUser,
+  updateUser,
 };
