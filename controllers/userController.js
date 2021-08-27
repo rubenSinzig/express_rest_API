@@ -41,7 +41,7 @@ const addNewUser = async (req, res) => {
   }
 };
 
-// update user (PUT) ______________________________________________
+// update all user data (PUT) ____________________________________
 
 const updateUser = async (req, res) => {
   try {
@@ -73,10 +73,44 @@ const updateUser = async (req, res) => {
   }
 };
 
+// update one user data (PATCH) ___________________________________
+
+const updateOneUser = async (req, res) => {
+  const { userName, userPass, age, toolStack, email } = req.body;
+
+  console.log(email);
+  // checks which parameter should be changed
+  if (userName) {
+    res.user.userName = userName;
+  }
+  if (userPass) {
+    res.user.userPass = userPass;
+  }
+  if (age) {
+    res.user.age = age;
+  }
+  if (toolStack) {
+    res.user.toolStack = toolStack;
+  }
+  if (email) {
+    res.user.email = email;
+  }
+
+  try {
+    await res.user.save();
+    // status 200 -> OK
+    res.status(200).json({ message: "Data Updated", data: res.user });
+  } catch (err) {
+    // status 400 -> Bad Request (client error)
+    res.status(400).json({ message: err.message });
+  }
+};
+
 // export _________________________________________________________
 
 module.exports = {
   getAllUser,
   addNewUser,
   updateUser,
+  updateOneUser,
 };

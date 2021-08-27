@@ -22,7 +22,7 @@ const getUser = async (req, res, next) => {
     res.status(500).json({ message: err.message });
   }
 
-  // res.user = user; <- For what do we need this?
+  res.user = user; // <- For what do we need this?
   next();
 };
 
