@@ -10,7 +10,11 @@ const {
   updateOneUser,
   getOneUser,
 } = require("../controllers/userController");
-const { getUser, checkUserInput } = require("../middleware/userMiddleware");
+const {
+  getUser,
+  checkUserInput,
+  checkAge,
+} = require("../middleware/userMiddleware");
 
 // GET all users on root route users http://localhost:5000/users ______________________
 
@@ -18,7 +22,7 @@ router.route("/").get(getAllUser);
 
 // Add (POST) new user on root route users http://localhost:5000/users ________________
 
-router.route("/").post(checkUserInput, addNewUser);
+router.route("/").post(checkUserInput, checkAge, addNewUser);
 
 // Updated (PUT) all user data upon their name http://localhost:5000/users/:name ______
 

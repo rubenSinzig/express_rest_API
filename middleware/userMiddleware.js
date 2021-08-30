@@ -46,9 +46,22 @@ const checkUserInput = async (req, res, next) => {
   next();
 };
 
+// Middleware for user age ________________________________________
+
+const checkAge = async (req, res, next) => {
+  const { age } = req.body;
+
+  if (age < 18) {
+    // status 400 -> Bad Request (client error)
+    return res.status(400).send("Sorry, your are too young.");
+  }
+  next();
+};
+
 // export _________________________________________________________
 
 module.exports = {
   getUser,
   checkUserInput,
+  checkAge,
 };
