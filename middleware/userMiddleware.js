@@ -70,7 +70,7 @@ const checkClass = async (req, res, next) => {
   next();
 };
 
-// Middleware to display the username first letter capitalized ____
+// Middleware to display the username first letter capitalized _____
 
 const firstLetterCapitalized = async (req, res, next) => {
   // grab username
@@ -84,6 +84,20 @@ const firstLetterCapitalized = async (req, res, next) => {
   next();
 };
 
+// Middleware to sort the toolStack Array alphabetically __________
+
+const sortAlphabetically = async (req, res, next) => {
+  // grab toolstack Array
+  const { toolStack } = res.user;
+
+  // sort the Array alphabetically
+  const sortedArray = toolStack.sort();
+
+  // output the result
+  res.user.toolStack = sortedArray;
+  next();
+};
+
 // export _________________________________________________________
 
 module.exports = {
@@ -92,4 +106,5 @@ module.exports = {
   checkAge,
   checkClass,
   firstLetterCapitalized,
+  sortAlphabetically,
 };
