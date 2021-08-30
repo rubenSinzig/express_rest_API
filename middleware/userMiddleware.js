@@ -26,8 +26,29 @@ const getUser = async (req, res, next) => {
   next();
 };
 
+/* Middleware to check that `userName`, `userPass`,
+`age`, `fbw` and `email` is not empty _____________________________
+*/
+
+const checkUserInput = async (req, res, next) => {
+  const { userName, userPass, age, fbw, email } = req.body;
+
+  if (
+    userName == null ||
+    userPass == null ||
+    age == null ||
+    fbw == null ||
+    email == null
+  ) {
+    // status 400 -> Bad Request (client error)
+    return res.status(400).send("Please fill in the blanks.");
+  }
+  next();
+};
+
 // export _________________________________________________________
 
 module.exports = {
   getUser,
+  checkUserInput,
 };
