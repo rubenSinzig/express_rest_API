@@ -15,6 +15,7 @@ const {
   checkUserInput,
   checkAge,
   checkClass,
+  firstLetterCapitalized,
 } = require("../middleware/userMiddleware");
 
 // GET all users on root route users http://localhost:5000/users ______________________
@@ -35,7 +36,7 @@ router.route("/:userName").patch(getUser, updateOneUser);
 
 // GET one user on display http://localhost:5000/display/:name _______________________
 
-router.route("/:userName").get(getUser, getOneUser);
+router.route("/:userName").get(getUser, firstLetterCapitalized, getOneUser);
 
 // export router _____________________________________________________________________
 

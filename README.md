@@ -28,9 +28,9 @@ New user endpoint should be able to accept a JSON object like the following:
 
 - Create a middleware method that will make sure the object received contains `userName`, `userPass`, `age`, `fbw` and `email`. <!-- finish -->
 - Create a middleware method that will check if the user is above 18 years old <!-- finish -->
-- Create a middleware method that will check if the user belongs to our FBW <!-- NOT finish -->
-- If all the above is true, then you should send a response with a success message <!-- NOT finish -->
-- If any of the middleware fails, you should send a response with an error message that says why the user is not valid. <!-- NOT finish -->
+- Create a middleware method that will check if the user belongs to our FBW <!-- finish -->
+- If all the above is true, then you should send a response with a success message <!-- finish -->
+- If any of the middleware fails, you should send a response with an error message that says why the user is not valid. <!-- finish -->
 
 #### EXAMPLE RESPONSES
 

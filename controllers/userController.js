@@ -106,7 +106,7 @@ const updateOneUser = async (req, res) => {
   }
 };
 
-// display one users in DB http://localhost:5000/users/:name (GET) _________
+// display one users in DB http://localhost:5000/display/:name (GET) _________
 
 const getOneUser = async (req, res) => {
   res.status(200).json(res.user);

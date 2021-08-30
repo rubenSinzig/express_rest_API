@@ -70,6 +70,20 @@ const checkClass = async (req, res, next) => {
   next();
 };
 
+// Middleware to display the username first letter capitalized ____
+
+const firstLetterCapitalized = async (req, res, next) => {
+  // grab username
+  const { userName } = res.user;
+
+  // capitalized first letter
+  const userNameResult = userName.charAt(0).toUpperCase() + userName.slice(1);
+
+  // output the result
+  res.user.userName = userNameResult;
+  next();
+};
+
 // export _________________________________________________________
 
 module.exports = {
@@ -77,4 +91,5 @@ module.exports = {
   checkUserInput,
   checkAge,
   checkClass,
+  firstLetterCapitalized,
 };
