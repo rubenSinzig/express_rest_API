@@ -8,6 +8,7 @@ const {
   addNewUser,
   updateUser,
   updateOneUser,
+  getOneUser,
 } = require("../controllers/userController");
 const { getUser } = require("../middleware/userMiddleware");
 
@@ -26,6 +27,10 @@ router.route("/:userName").put(getUser, updateUser);
 // Updated (PATCH) one user data upon their name http://localhost:5000/users/:name ___
 
 router.route("/:userName").patch(getUser, updateOneUser);
+
+// GET one user on display http://localhost:5000/display/:name _______________________
+
+router.route("/:userName").get(getUser, getOneUser);
 
 // export router _____________________________________________________________________
 

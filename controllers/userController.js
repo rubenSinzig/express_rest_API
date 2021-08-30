@@ -1,7 +1,7 @@
 const userData = require("../model/userModel");
 const express = require("express");
 
-// display all users in DB http://localhost:5000/users (GET) ______
+// display all users in DB http://localhost:5000/users (GET) _______________
 
 const getAllUser = async (req, res) => {
   try {
@@ -15,7 +15,7 @@ const getAllUser = async (req, res) => {
   }
 };
 
-// add new user (POST) ____________________________________________
+// add new user (POST) _____________________________________________________
 
 const addNewUser = async (req, res) => {
   const user = new userData({
@@ -41,7 +41,7 @@ const addNewUser = async (req, res) => {
   }
 };
 
-// update all user data (PUT) ____________________________________
+// update all user data (PUT) _____________________________________________
 
 const updateUser = async (req, res) => {
   try {
@@ -73,7 +73,7 @@ const updateUser = async (req, res) => {
   }
 };
 
-// update one user data (PATCH) ___________________________________
+// update one user data (PATCH) ____________________________________________
 
 const updateOneUser = async (req, res) => {
   const { userName, userPass, age, toolStack, email } = req.body;
@@ -106,11 +106,18 @@ const updateOneUser = async (req, res) => {
   }
 };
 
-// export _________________________________________________________
+// display one users in DB http://localhost:5000/users/:name (GET) _________
+
+const getOneUser = async (req, res) => {
+  res.status(200).json(res.user);
+};
+
+// export __________________________________________________________________
 
 module.exports = {
   getAllUser,
   addNewUser,
   updateUser,
   updateOneUser,
+  getOneUser,
 };

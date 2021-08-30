@@ -8,8 +8,8 @@ Create a Express server that handles:
 - A `GET` request endpoint at `/user` to display all users in DB. <!-- finish -->
 - A `POST` request endpoint at `/user` to add new user to DB. <!-- finish -->
 - A `PUT` request endpoint at `/user/:name` to update user from DB upon their name. <!-- finish -->
-- A `PATCH` request endpoint at `/user/:name` to update some user data from DB upon their name. <!-- NOT finish -->
-- A `GET` request endpoint at `/display/:name` to display one user from DB upon their name. <!-- NOT finish -->
+- A `PATCH` request endpoint at `/user/:name` to update some user data from DB upon their name. <!-- finish -->
+- A `GET` request endpoint at `/display/:name` to display one user from DB upon their name. <!-- finish -->
 
 New user endpoint should be able to accept a JSON object like the following:
 

@@ -33,6 +33,18 @@ app.get("/", (req, res) => {
   res.status(200).send("Welcome to the express rest API project");
 });
 
+// root route for display "/display" ________________
+
+app.get("/display", (req, res) => {
+  res
+    .status(200)
+    .send(
+      "Please add your [userName] instead of :userName in the url -> http://localhost:5000/display/:userName"
+    );
+});
+
+app.use("/display", user);
+
 // export app _______________________________________
 
 module.exports = app;
