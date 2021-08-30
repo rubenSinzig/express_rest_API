@@ -17,6 +17,7 @@ const {
   checkClass,
   firstLetterCapitalized,
   sortAlphabetically,
+  stringToNum,
 } = require("../middleware/userMiddleware");
 
 // GET all users on root route users http://localhost:5000/users ______________________
@@ -39,7 +40,13 @@ router.route("/:userName").patch(getUser, updateOneUser);
 
 router
   .route("/:userName")
-  .get(getUser, firstLetterCapitalized, sortAlphabetically, getOneUser);
+  .get(
+    getUser,
+    firstLetterCapitalized,
+    sortAlphabetically,
+    stringToNum,
+    getOneUser
+  );
 
 // export router _____________________________________________________________________
 

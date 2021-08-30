@@ -98,6 +98,25 @@ const sortAlphabetically = async (req, res, next) => {
   next();
 };
 
+// Middleware to turn age and fbw to number _______________________
+
+const stringToNum = async (req, res, next) => {
+  // grab age and fbw from DB
+  const { age, fbw } = res.user;
+
+  // convert String to Number
+  const ageToNum = parseInt(age);
+  const fbwToNum = parseInt(fbw);
+
+  // console.log(ageToNum, fbwToNum, age, fbw);
+
+  // output the result
+  // the problem is that it give still an String back not a Number. I think it is because of the type in the Schema (userModel.js)
+  res.user.age = ageToNum;
+  res.user.fbw = fbwToNum;
+  next();
+};
+
 // export _________________________________________________________
 
 module.exports = {
@@ -107,4 +126,5 @@ module.exports = {
   checkClass,
   firstLetterCapitalized,
   sortAlphabetically,
+  stringToNum,
 };
