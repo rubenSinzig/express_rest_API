@@ -58,10 +58,23 @@ const checkAge = async (req, res, next) => {
   next();
 };
 
+// Middleware for user is in the right class ______________________
+
+const checkClass = async (req, res, next) => {
+  const { fbw } = req.body;
+
+  if (fbw != 48) {
+    // status 400 -> Bad Request (client error)
+    return res.status(400).send("Sorry, your are not in FBW-48.");
+  }
+  next();
+};
+
 // export _________________________________________________________
 
 module.exports = {
   getUser,
   checkUserInput,
   checkAge,
+  checkClass,
 };
