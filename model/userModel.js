@@ -27,7 +27,8 @@ const userDataSchema = new mongoose.Schema({
   },
   toolStack: {
     type: Array,
-    required: [true, "Please enter your skills"],
+    // should not be required
+    // required: [true, "Please enter your skills"],
   },
   email: {
     type: String,

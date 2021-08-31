@@ -58,7 +58,7 @@ New user endpoint should be able to accept a JSON object like the following:
 
 - Create a middleware that makes the `firstName` starts with a capital letter. <!-- finish -->
 - Create a middleware that sorts the `toolStack` array alphabetically. <!-- finish -->
-- Create a middleware that will turn `age` and `fbw` to numbers. <!-- NOT finish -->
+- Create a middleware that will turn `age` and `fbw` to numbers. <!-- finish -->
 
 #### EXAMPLE RESPONSES
 
