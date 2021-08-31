@@ -3,32 +3,31 @@
 const express = require("express");
 const router = express.Router();
 const UserData = require("../model/userModel");
-const {
-  getAllUser,
-  addNewUser,
-  updateUser,
-  updateOneUser,
-  getOneUser,
-} = require("../controllers/userController");
+const userCon = require("../controllers/userController");
 const userMd = require("../middleware/userMiddleware");
 
 // GET all users on root route users http://localhost:5000/users ______________________
 
-router.route("/").get(getAllUser);
+router.route("/").get(userCon.getAllUser);
 
 // Add (POST) new user on root route users http://localhost:5000/users ________________
 
 router
   .route("/")
-  .post(userMd.checkUserInput, userMd.checkAge, userMd.checkClass, addNewUser);
+  .post(
+    userMd.checkUserInput,
+    userMd.checkAge,
+    userMd.checkClass,
+    userCon.addNewUser
+  );
 
 // Updated (PUT) all user data upon their name http://localhost:5000/users/:name ______
 
-router.route("/:userName").put(userMd.getUser, updateUser);
+router.route("/:userName").put(userMd.getUser, userCon.updateUser);
 
 // Updated (PATCH) one user data upon their name http://localhost:5000/users/:name ___
 
-router.route("/:userName").patch(userMd.getUser, updateOneUser);
+router.route("/:userName").patch(userMd.getUser, userCon.updateOneUser);
 
 // GET one user on display http://localhost:5000/display/:name _______________________
 
@@ -39,7 +38,7 @@ router
     userMd.firstLetterCapitalized,
     userMd.sortAlphabetically,
     userMd.stringToNum,
-    getOneUser
+    userCon.getOneUser
   );
 
 // export router _____________________________________________________________________

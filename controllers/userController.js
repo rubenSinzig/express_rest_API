@@ -1,9 +1,12 @@
+// require (import) _______________________________________________
+
 const userData = require("../model/userModel");
 const express = require("express");
+const userCon = {};
 
 // display all users in DB http://localhost:5000/users (GET) _______________
 
-const getAllUser = async (req, res) => {
+userCon.getAllUser = async (req, res) => {
   try {
     const users = await userData.find();
 
@@ -17,7 +20,7 @@ const getAllUser = async (req, res) => {
 
 // add new user (POST) _____________________________________________________
 
-const addNewUser = async (req, res) => {
+userCon.addNewUser = async (req, res) => {
   const user = new userData({
     userName: req.body.userName,
     userPass: req.body.userPass,
@@ -43,7 +46,7 @@ const addNewUser = async (req, res) => {
 
 // update all user data (PUT) _____________________________________________
 
-const updateUser = async (req, res) => {
+userCon.updateUser = async (req, res) => {
   try {
     await userData.updateOne(
       // returns with the first username found in the DB
@@ -75,7 +78,7 @@ const updateUser = async (req, res) => {
 
 // update one user data (PATCH) ____________________________________________
 
-const updateOneUser = async (req, res) => {
+userCon.updateOneUser = async (req, res) => {
   const { userName, userPass, age, toolStack, email } = req.body;
 
   console.log(email);
@@ -108,16 +111,10 @@ const updateOneUser = async (req, res) => {
 
 // display one users in DB http://localhost:5000/display/:name (GET) _________
 
-const getOneUser = async (req, res) => {
+userCon.getOneUser = async (req, res) => {
   res.status(200).json(res.user);
 };
 
 // export __________________________________________________________________
 
-module.exports = {
-  getAllUser,
-  addNewUser,
-  updateUser,
-  updateOneUser,
-  getOneUser,
-};
+module.exports = userCon;
