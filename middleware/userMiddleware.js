@@ -2,10 +2,11 @@
 
 const userData = require("../model/userModel");
 const express = require("express");
+const userMd = {};
 
 // Middleware to get one user _____________________________________
 
-const getUser = async (req, res, next) => {
+userMd.getUser = async (req, res, next) => {
   // declare variable
   let user;
 
@@ -30,7 +31,7 @@ const getUser = async (req, res, next) => {
 `age`, `fbw` and `email` is not empty _____________________________
 */
 
-const checkUserInput = async (req, res, next) => {
+userMd.checkUserInput = async (req, res, next) => {
   const { userName, userPass, age, fbw, email } = req.body;
 
   if (
@@ -48,7 +49,7 @@ const checkUserInput = async (req, res, next) => {
 
 // Middleware for user age ________________________________________
 
-const checkAge = async (req, res, next) => {
+userMd.checkAge = async (req, res, next) => {
   const { age } = req.body;
 
   if (age < 18) {
@@ -60,7 +61,7 @@ const checkAge = async (req, res, next) => {
 
 // Middleware for user is in the right class ______________________
 
-const checkClass = async (req, res, next) => {
+userMd.checkClass = async (req, res, next) => {
   const { fbw } = req.body;
 
   if (fbw != 48) {
@@ -72,7 +73,7 @@ const checkClass = async (req, res, next) => {
 
 // Middleware to display the username first letter capitalized _____
 
-const firstLetterCapitalized = async (req, res, next) => {
+userMd.firstLetterCapitalized = async (req, res, next) => {
   // grab username
   const { userName } = res.user;
 
@@ -86,7 +87,7 @@ const firstLetterCapitalized = async (req, res, next) => {
 
 // Middleware to sort the toolStack Array alphabetically __________
 
-const sortAlphabetically = async (req, res, next) => {
+userMd.sortAlphabetically = async (req, res, next) => {
   // grab toolstack Array
   const { toolStack } = res.user;
 
@@ -100,7 +101,7 @@ const sortAlphabetically = async (req, res, next) => {
 
 // Middleware to turn age and fbw to number _______________________
 
-const stringToNum = async (req, res, next) => {
+userMd.stringToNum = async (req, res, next) => {
   // grab age and fbw from DB
   const { age, fbw } = res.user;
 
@@ -108,7 +109,7 @@ const stringToNum = async (req, res, next) => {
   const ageToNum = parseInt(age);
   const fbwToNum = parseInt(fbw);
 
-  // console.log(ageToNum, fbwToNum, age, fbw);
+  console.log(ageToNum, fbwToNum, age, fbw);
 
   // output the result
   // the problem is that it give still an String back not a Number. I think it is because of the type in the Schema (userModel.js)
@@ -119,12 +120,4 @@ const stringToNum = async (req, res, next) => {
 
 // export _________________________________________________________
 
-module.exports = {
-  getUser,
-  checkUserInput,
-  checkAge,
-  checkClass,
-  firstLetterCapitalized,
-  sortAlphabetically,
-  stringToNum,
-};
+module.exports = userMd;

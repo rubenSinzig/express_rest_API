@@ -10,15 +10,7 @@ const {
   updateOneUser,
   getOneUser,
 } = require("../controllers/userController");
-const {
-  getUser,
-  checkUserInput,
-  checkAge,
-  checkClass,
-  firstLetterCapitalized,
-  sortAlphabetically,
-  stringToNum,
-} = require("../middleware/userMiddleware");
+const userMd = require("../middleware/userMiddleware");
 
 // GET all users on root route users http://localhost:5000/users ______________________
 
@@ -26,25 +18,27 @@ router.route("/").get(getAllUser);
 
 // Add (POST) new user on root route users http://localhost:5000/users ________________
 
-router.route("/").post(checkUserInput, checkAge, checkClass, addNewUser);
+router
+  .route("/")
+  .post(userMd.checkUserInput, userMd.checkAge, userMd.checkClass, addNewUser);
 
 // Updated (PUT) all user data upon their name http://localhost:5000/users/:name ______
 
-router.route("/:userName").put(getUser, updateUser);
+router.route("/:userName").put(userMd.getUser, updateUser);
 
 // Updated (PATCH) one user data upon their name http://localhost:5000/users/:name ___
 
-router.route("/:userName").patch(getUser, updateOneUser);
+router.route("/:userName").patch(userMd.getUser, updateOneUser);
 
 // GET one user on display http://localhost:5000/display/:name _______________________
 
 router
   .route("/:userName")
   .get(
-    getUser,
-    firstLetterCapitalized,
-    sortAlphabetically,
-    stringToNum,
+    userMd.getUser,
+    userMd.firstLetterCapitalized,
+    userMd.sortAlphabetically,
+    userMd.stringToNum,
     getOneUser
   );
 
