@@ -12,7 +12,7 @@ const userDataSchema = new mongoose.Schema({
   },
   userPass: {
     type: String,
-    trim: true,
+    // trim: true, don't trim password ( hashed )
     required: [true, "Please enter a password"],
   },
   age: {

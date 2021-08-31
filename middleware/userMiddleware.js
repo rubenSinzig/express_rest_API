@@ -109,7 +109,7 @@ userMd.stringToNum = async (req, res, next) => {
   const ageToNum = parseInt(age);
   const fbwToNum = parseInt(fbw);
 
-  console.log(ageToNum, fbwToNum, age, fbw);
+  // console.log(ageToNum, fbwToNum, age, fbw);
 
   // output the result
   // the problem is that it give still an String back not a Number. I think it is because of the type in the Schema (userModel.js)
